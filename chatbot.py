@@ -49,9 +49,13 @@ def ask_knn_bot(user_input):
     prediction = knn.predict(input_vector)
     return prediction[0]
 
-# --- Testing ---
-print(ask_knn_bot("can I get the netflix password"))
-# Output: Netflix -> Email: family@gmail.com | Pass: 12345
+# Add this at the bottom of chatbot.py
+print("--- Family KNN Chatbot Active (Type 'quit' to exit) ---")
+while True:
+    user_query = input("\nYou: ")
+    if user_query.lower() in ["quit", "exit"]:
+        print("Goodbye!")
+        break
 
-print(ask_knn_bot("wifi network name"))
-# Output: Wi-Fi -> Network: OurHomeWifi | Pass: SuperSecret123
+    response = ask_knn_bot(user_query)
+    print(f"Bot: {response}")
